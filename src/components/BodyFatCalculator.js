@@ -185,13 +185,13 @@ function BodyFatCalculator(props) {
 
     const getDisabledButtonCalculate = () => {
         if(userGender === 'H'){
-            if(userHeight !== '' && userWeight !== '' && userWaist !== '' && userNeck !== ''){
+            if((userHeight !== '' && parseFloat(userHeight) > 0) && (userWeight !== '' && parseFloat(userWeight) > 0) && (userWaist !== '' && parseFloat(userWaist) > 0) && (userNeck !== '' && parseFloat(userNeck) > 0)){
                 return false
             }else{
                 return true
             }
         }else{
-            if(userHeight !== '' && userWeight !== '' && userWaist !== '' && userHip !== '' && userNeck !== ''){
+            if((userHeight !== '' && parseFloat(userHeight) > 0) && (userWeight !== '' && parseFloat(userWeight) > 0) && (userWaist !== '' && parseFloat(userWaist) > 0) && (userHip !== '' && parseFloat(userHip) > 0) && (userNeck !== '' && parseFloat(userNeck) > 0)){
                 return false
             }else{
                 return true
@@ -519,7 +519,7 @@ function BodyFatCalculator(props) {
                 <Grid container direction="row" alignItems="center">
                     <Tooltip title={'Obtén tu resultado'}>
                         <Button
-                            className={`${wzButtonCirclePadding} ${getDisabledButtonCalculate() ? '' : wzBgPurple}`}
+                            className={`${wzButtonCirclePadding} ${wzBgPurple}`}
                             disabled={getDisabledButtonCalculate()}
                             variant="primary"
                             ref={calculateButtonRef}
@@ -528,9 +528,9 @@ function BodyFatCalculator(props) {
                                 doGetFatResult()
                                 setShowingResult(true)
                             }}
-                            style={{ textTransform: 'none' }}
+                            style={{ textTransform: 'none', opacity: getDisabledButtonCalculate() ? 0.5 : 1 }}
                         >
-                            <p className={wzTextNormal} style={{ marginTop: 0, marginBottom: 0 }}>{getDisabledButtonCalculate() ? 'Rellena todos los valores para calcular' : 'Calcular'}</p>
+                            <p className={wzTextNormal} style={{ marginTop: 0, marginBottom: 0 }}>Calcular</p>
                         </Button>
                     </Tooltip>
 

@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import {
-    //HashRouter as Router,
     BrowserRouter as Router,
     Routes,
     Route,
@@ -19,8 +18,6 @@ function App() {
             <Router history={Router}>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
-
-                    {/*<Route path="/Home/:Token/:userTypePro">*/}
 
                     <Route path="*" element={<Home/>}/>
                 </Routes>
